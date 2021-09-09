@@ -1,7 +1,7 @@
 node {
    def mvnHome
    stage('Prepare') {
-      git url: 'git@github.com:Debraj68/my-testrepo.git', branch: 'develop'
+      git url: 'git@github.com:Debraj68/check-in-app', branch: 'master'
       mvnHome = tool 'mvn'
    }
    stage('Build') {
