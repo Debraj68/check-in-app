@@ -40,20 +40,20 @@ public class ProductAPI {
 	}
 	
 	// http://localhost:8080/api/v1/products/45000
-		@GetMapping("/findByPrice/{price}")
-		public ResponseEntity<List<Product>> findProductsByPrice
-		(@PathVariable("price") Double price){
+		@GetMapping("/findByseatno/{seatno}")
+		public ResponseEntity<List<Product>> findProductsBySeatno
+		(@PathVariable("seatno") Integer seatno){
 			
 		return new ResponseEntity<List<Product>>
-		(repository.findByPriceGreaterThanEqual(price).get(), HttpStatus.OK);
+		(repository.findBySeatnoGreaterThanEqual(seatno).get(), HttpStatus.OK);
 		}
 		// http://localhost:8080/api/v1/products/findByPriceOrName?price=
-		@GetMapping("/findByPriceOrName")
-		public ResponseEntity<List<Product>> findProductsByPriceOrName
-		(@RequestParam("price") Optional<Double> price,
-				@RequestParam("productName") Optional<String> productName){
+		@GetMapping("/findByPnrOrName")
+		public ResponseEntity<List<Product>> findProductsByPnrOrName
+		(@RequestParam("seatno") Optional<Integer> seatno,
+				@RequestParam("firstName") Optional<String> firstName){
 			return new ResponseEntity<List<Product>>
-		(repository.findByProductNameOrPrice(productName.orElse(""), price.orElse(0.0)).get(), HttpStatus.OK);
+		(repository.findByFirstNameOrSeatno(firstName.orElse(""), seatno.orElse(0)).get(), HttpStatus.OK);
 		}
 	
 	// http://localhost:8080/api/v1/products
@@ -110,4 +110,3 @@ return new ResponseEntity<Product>(repository.findById(id).get(), HttpStatus.OK)
 	
 
 }
-

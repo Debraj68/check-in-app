@@ -18,6 +18,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import  com.myapp.spring.model.Product;
 
+import com.myapp.spring.repository.ProductRepository;
+
 @SpringBootTest
 public class ProductRepositoryTest {
 	
@@ -54,7 +56,7 @@ public class ProductRepositoryTest {
 		Product product=repository.findById(100).orElseGet(()-> new Product());
 		
 		// Then perform Assert Conditions To validate
-		Assertions.assertNull(product.getProductId(), 
+		Assertions.assertNull(product.getBaggageId(), 
 				"Product With Id 100 should not exist");
 		
 		}
@@ -65,8 +67,8 @@ public class ProductRepositoryTest {
 	public void testProductSavedSucessfully() {
 		
 		// given a mock product
-		Product product = new Product("Vivo", "Vivo12Pro", 37545.0, 3.9);
-		product.setProductId(5);
+		Product product = new Product("Rahul", "dd1234", 29, "p.rahulsai@gmail.com");
+		product.setBaggageId(5);
 		
 		// when we retrieve a product using non existing id
 		Product savedProduct=repository.save(product);
@@ -75,10 +77,10 @@ public class ProductRepositoryTest {
 		Assertions.assertNotNull(savedProduct, 
 				"New Product should be saved");
 		
-		Assertions.assertNotNull(savedProduct.getProductId(), 
+		Assertions.assertNotNull(savedProduct.getBaggageId(), 
 				"New Product should have id");
-		Assertions.assertEquals(product.getProductName(), 
-				savedProduct.getProductName());
+		Assertions.assertEquals(product.getFirstName(), 
+				savedProduct.getFirstName());
 		
 		
 		}
@@ -88,19 +90,18 @@ public class ProductRepositoryTest {
 	public void testProductUpdatedSucessfully() {
 		
 		// given a mock product
-		Product product = new Product("Oneplus", "OnePlus9Pro", 70000.00, 4.5);
-		product.setProductId(1);
+		Product product = new Product("sai", "de1234", 15, "sai@gmail.com");
+		product.setBaggageId(1);
 		
 		// when we retrieve a product using non existing id
 		Product updatedProduct=repository.save(product);
 		
 		
-		Assertions.assertEquals(product.getPrice(), 
-				updatedProduct.getPrice());
+		Assertions.assertEquals(product.getSeatno(), 
+				updatedProduct.getSeatno());
 		
 		
 		}
 	
 
 }
-

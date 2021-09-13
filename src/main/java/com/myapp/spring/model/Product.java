@@ -17,77 +17,80 @@ public class Product {
 	
 	@Id
 	//@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "PRODUCT_ID")
-	private Integer productId;
+	@Column(name = "BAGGAGE_ID")
+	private Integer baggageId;
 	
-	@Column(name = "PRODUCT_NAME",nullable = false)
-	private String productName;
+	@Column(name = "FIRST_NAME",nullable = false)
+	private String firstName;
 	
-	@Column(name = "PRODUCT_DESCRIPTION")
-	private String description;
+	@Column(name = "PNR")
+	private String pnr;
 	
-	@Column(name = "PRODUCT_PRICE")
-	private Double price;
+	@Column(name = "Seat_NO")
+	private Integer seatno;
 	
-	@Column(name = "PRODUCT_RATING")
-	private Double starRating;
+	@Column(name = "USER_EMAIL")
+	private String email;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(String productName, String description, Double price, Double starRating) {
-		this.productName = productName;
-		this.description = description;
-		this.price = price;
-		this.starRating = starRating;
+	public Product(String firstName, String pnr, Integer seatno, String email) {
+		this.firstName = firstName;
+		this.pnr = pnr;
+		this.seatno = seatno;
+		this.email = email;
 	}
 
-	public Integer getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Integer productId) {
-		this.productId = productId;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
-	public Double getStarRating() {
-		return starRating;
-	}
-
-	public void setStarRating(Double starRating) {
-		this.starRating = starRating;
-	}
 	
 	
+
+	public Integer getBaggageId() {
+		return baggageId;
+	}
+
+	public void setBaggageId(Integer baggageId) {
+		this.baggageId = baggageId;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getPnr() {
+		return pnr;
+	}
+
+	public void setPnr(String pnr) {
+		this.pnr = pnr;
+	}
+
+	
+
+	public Integer getSeatno() {
+		return seatno;
+	}
+
+	public void setSeatno(Integer seatno) {
+		this.seatno = seatno;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(description, price, productId, productName, starRating);
+		return Objects.hash(pnr, seatno, baggageId, firstName, email);
 	}
 
 	@Override
@@ -97,9 +100,9 @@ public class Product {
 		if (!(obj instanceof Product))
 			return false;
 		Product other = (Product) obj;
-		return Objects.equals(description, other.description) && Objects.equals(price, other.price)
-				&& Objects.equals(productId, other.productId) && Objects.equals(productName, other.productName)
-				&& Objects.equals(starRating, other.starRating);
+		return Objects.equals(pnr, other.pnr) && Objects.equals(seatno, other.seatno)
+				&& Objects.equals(baggageId, other.baggageId) && Objects.equals(firstName, other.firstName)
+				&& Objects.equals(email, other.email);
 	}
 	
 	

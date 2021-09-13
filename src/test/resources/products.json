@@ -2,32 +2,15 @@
 
 {
 
-"productId":1,
+"baggageId":1,
 
-"productName":"Oneplus",
+"firstName":"vamsi",
 
-"description":"OnePlus9Pro",
+"pnr":"fe1234",
 
-"price":60000.00,
+"seatno":12,
 
-"starRating":4.5
-
-
-
-},
-
-{
-
-"productId":2,
-
-"productName":"Sasmung",
-
-"description":"GalaxyNote12",
-
-"price":50000.00,
-
-"starRating":4.1
-
+"email":"vamsi@gmail.com"
 
 
 
@@ -35,15 +18,32 @@
 
 {
 
-"productId":3,
+"baggageId":2,
 
-"productName":"Oneplus",
+"firstName":"Sai",
 
-"description":"OnePlus8Pro",
+"pnr":"ffr123",
 
-"price":40000.00,
+"seatno":50,
 
-"starRating":4.5
+"email":"p.rahul@gmail.com"
+
+
+
+
+},
+
+{
+
+"baggageId":3,
+
+"firstName":"vamsi1",
+
+"pnr":"jh1321",
+
+"seatno":40,
+
+"email":"vamsi@gmail.com"
 
 
 

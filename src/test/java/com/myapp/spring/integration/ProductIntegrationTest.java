@@ -79,11 +79,11 @@ private static File DATA_JSON= Paths.get("src","test","resources","products.json
 		
 		// Validate Response Body
 		
-		.andExpect(jsonPath("$.productId", is(1)))
-		.andExpect(jsonPath("$.productName", is("Oneplus")))
-		.andExpect(jsonPath("$.description", is("OnePlus9Pro")))
-		.andExpect(jsonPath("$.price", is(60000.00)))
-		.andExpect(jsonPath("$.starRating", is(4.5)));
+		.andExpect(jsonPath("$.baggageId", is(1)))
+		.andExpect(jsonPath("$.firstName", is("vamsi")))
+		.andExpect(jsonPath("$.pnr", is("fe1234")))
+		.andExpect(jsonPath("$.seatno", is(12)))
+		.andExpect(jsonPath("$.email", is("vamsi@gmail.com")));
 		
 		
 	}
@@ -101,17 +101,17 @@ private static File DATA_JSON= Paths.get("src","test","resources","products.json
 		
 		// Validate Response Body
 		
-		.andExpect(jsonPath("$[0].productId", is(1)))
-		.andExpect(jsonPath("$[0].productName", is("Oneplus")))
-		.andExpect(jsonPath("$[0].description", is("OnePlus9Pro")))
-		.andExpect(jsonPath("$[0].price", is(60000.00)))
-		.andExpect(jsonPath("$[0].starRating", is(4.5)))
+		.andExpect(jsonPath("$[0].baggageId", is(1)))
+		.andExpect(jsonPath("$[0].firstName", is("vamsi")))
+		.andExpect(jsonPath("$[0].pnr", is("fe1234")))
+		.andExpect(jsonPath("$[0].seatno", is(12)))
+		.andExpect(jsonPath("$[0].email", is("vamsi@gmail.com")))
 		
-		.andExpect(jsonPath("$[1].productId", is(2)))
-		.andExpect(jsonPath("$[1].productName", is("Sasmung")))
-		.andExpect(jsonPath("$[1].description", is("GalaxyNote12")))
-		.andExpect(jsonPath("$[1].price", is(50000.00)))
-		.andExpect(jsonPath("$[1].starRating", is(4.1)));
+		.andExpect(jsonPath("$[1].baggageId", is(2)))
+		.andExpect(jsonPath("$[1].firstName", is("Sai")))
+		.andExpect(jsonPath("$[1].pnr", is("ffr123")))
+		.andExpect(jsonPath("$[1].seatno", is(50)))
+		.andExpect(jsonPath("$[1].email", is("p.rahul@gmail.com")));
 		
 		
 		
@@ -124,48 +124,48 @@ private static File DATA_JSON= Paths.get("src","test","resources","products.json
 		
 	
 		// Prepare Mock Service Method
-		double price =50000.00;
+		Integer seatno =50;
 		
 		
 		// Perform GET Request
 		
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/products/findByPrice/{price}",price))
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/products/findBySeatno/{seatno}",seatno))
 		// Validate Status should be 200 OK and JSON response received
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
 		
 		// Validate Response Body
 		
-		.andExpect(jsonPath("$[0].productId", is(35)))
-		.andExpect(jsonPath("$[0].productName", is("Oneplus")))
-		.andExpect(jsonPath("$[0].description", is("OnePlus9Pro")))
-		.andExpect(jsonPath("$[0].price", is(70000.00)))
-		.andExpect(jsonPath("$[0].starRating", is(4.5)))
+		.andExpect(jsonPath("$[0].baggageId", is(35)))
+		.andExpect(jsonPath("$[0].firstName", is("test1")))
+		.andExpect(jsonPath("$[0].pnr", is("kj12345")))
+		.andExpect(jsonPath("$[0].seatno", is(21)))
+		.andExpect(jsonPath("$[0].email", is("test3@gmail.com")))
 		
-		.andExpect(jsonPath("$[1].productId", is(36)))
-		.andExpect(jsonPath("$[1].productName", is("Oneplus")))
-		.andExpect(jsonPath("$[1].description", is("OnePlus8Pro")))
-		.andExpect(jsonPath("$[1].price", is(60000.00)))
-		.andExpect(jsonPath("$[1].starRating", is(4.5)))
+		.andExpect(jsonPath("$[1].baggageId", is(36)))
+		.andExpect(jsonPath("$[1].firstName", is("test2")))
+		.andExpect(jsonPath("$[1].pnr", is("jk1234")))
+		.andExpect(jsonPath("$[1].seatno", is(6)))
+		.andExpect(jsonPath("$[1].email", is("tes4@gmail.com")))
 		
-		.andExpect(jsonPath("$[2].productId", is(37)))
-		.andExpect(jsonPath("$[2].productName", is("Iphone")))
-		.andExpect(jsonPath("$[2].description", is("Iphone12")))
-		.andExpect(jsonPath("$[2].price", is(80000.00)))
-		.andExpect(jsonPath("$[2].starRating", is(4.5)));
+		.andExpect(jsonPath("$[2].baggageId", is(37)))
+		.andExpect(jsonPath("$[2].firstName", is("test3")))
+		.andExpect(jsonPath("$[2].pnr", is("lk1234")))
+		.andExpect(jsonPath("$[2].seatno", is(8)))
+		.andExpect(jsonPath("$[2].email", is("tes5@gmail.com")));
 		
 		
 	}
 	
 	//@Test
-	@DisplayName("Test All Products By Price /api/v1/products?name=&price")
-	public void testGetAllProductsByNameOrPrice() throws Exception {
+	@DisplayName("Test All Products By Price /api/v1/products?name=&seatno")
+	public void testGetAllProductsByNameOrSeatno() throws Exception {
 		
 		
 		
 		// Prepare Mock Service Method
-		Double price =50000.00;
-		String productName="Oneplus";
+		Integer seatno =50;
+		String firstName="rahul";
 		
 	
 		
@@ -174,27 +174,26 @@ private static File DATA_JSON= Paths.get("src","test","resources","products.json
 		
 		
 		mockMvc.perform(MockMvcRequestBuilders
-				.get("/api/v1/products/findByPriceOrName")
-				.queryParam("productName",productName)
-				.queryParam("price", price.toString()))
+				.get("/api/v1/products/findBySeatnoOrName")
+				.queryParam("firstName",firstName)
+				.queryParam("seatno", seatno.toString()))
 		// Validate Status should be 200 OK and JSON response received
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
 		
 		// Validate Response Body
 		
-		.andExpect(jsonPath("$[0].productId", is(35)))
-		.andExpect(jsonPath("$[0].productName", is("Oneplus")))
-		.andExpect(jsonPath("$[0].description", is("OnePlus9Pro")))
-		.andExpect(jsonPath("$[0].price", is(70000.00)))
-		.andExpect(jsonPath("$[0].starRating", is(4.5)))
+		.andExpect(jsonPath("$[0].baggageId", is(35)))
+		.andExpect(jsonPath("$[0].firstName", is("test1")))
+		.andExpect(jsonPath("$[0].pnr", is("kj12345")))
+		.andExpect(jsonPath("$[0].seatno", is(21)))
+		.andExpect(jsonPath("$[0].email", is("test3@gmail.com")))
 		
-		.andExpect(jsonPath("$[1].productId", is(36)))
-		.andExpect(jsonPath("$[1].productName", is("Oneplus")))
-		.andExpect(jsonPath("$[1].description", is("OnePlus8Pro")))
-		.andExpect(jsonPath("$[1].price", is(60000.00)))
-		.andExpect(jsonPath("$[1].starRating", is(4.5)));
-		
+		.andExpect(jsonPath("$[1].baggageId", is(36)))
+		.andExpect(jsonPath("$[1].firstName", is("test2")))
+		.andExpect(jsonPath("$[1].pnr", is("jk1234")))
+		.andExpect(jsonPath("$[1].seatno", is(6)))
+		.andExpect(jsonPath("$[1].email", is("tes4@gmail.com")));
 		
 		
 		
@@ -208,10 +207,10 @@ private static File DATA_JSON= Paths.get("src","test","resources","products.json
 	public void testAddNewProduct() throws Exception {
 		
 		// Prepare Mock Product
-		Product newproduct = new Product("Oneplus", "OnePlus9Pro", 70000.00, 4.5);
+		Product newproduct = new Product("test5", "hj1234", 23, "test6@gmail.com");
 		
-		Product mockproduct = new Product("Oneplus", "OnePlus9Pro", 70000.00, 4.5);
-		mockproduct.setProductId(50);
+		Product mockproduct = new Product("test6", "vg1234", 12, "test7@gmail.com");
+		mockproduct.setBaggageId(50);
 		// Prepare Mock Service Method
 		
 		
@@ -228,11 +227,11 @@ private static File DATA_JSON= Paths.get("src","test","resources","products.json
 		// Validate Response Body
 		.andExpect(status().isCreated())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-		.andExpect(jsonPath("$.productId", is(50)))
-		.andExpect(jsonPath("$.productName", is("Oneplus")))
-		.andExpect(jsonPath("$.description", is("OnePlus9Pro")))
-		.andExpect(jsonPath("$.price", is(70000.00)))
-		.andExpect(jsonPath("$.starRating", is(4.5)));
+		.andExpect(jsonPath("$.baggageId", is(50)))
+		.andExpect(jsonPath("$.firstName", is("test8")))
+		.andExpect(jsonPath("$.pnr", is("cv123")))
+		.andExpect(jsonPath("$.seatno", is(70)))
+		.andExpect(jsonPath("$.email", is("set@gmail.com")));
 		
 		
 	}

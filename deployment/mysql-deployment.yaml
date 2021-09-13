@@ -7,8 +7,8 @@ metadata:
 spec:
   #type: NodePort
   ports:
-    - port: 3306
-      #nodePort: 31000
+    - port: 3307
+      #nodePort: 3307
   selector:
     app: mysql
 ---
@@ -72,7 +72,7 @@ spec:
                   name: mysql-secret
                   key: MYSQL_PASSWORD
           ports:
-            - containerPort: 3306
+            - containerPort: 3307
               name: mysql
           volumeMounts:
             - name: mysql-persistent-storage
@@ -93,8 +93,8 @@ metadata:
   name: mysql-config
 data:
   MYSQL_DATABASE: devops
-  MYSQL_DATABASE_URL: jdbc:mysql://mysql/devops
+  MYSQL_DATABASE_URL: jdbc:mysql://mysql:3307/devops
   initdb.sql: |
     use devops;
     
-    INSERT INTO springboot_products VALUES(1,'Oneplus','Oneplus9Pro',56789.5,4.2);
+    #INSERT INTO springboot_products VALUES(1,'Oneplus','Oneplus9Pro',56789.5,4.2);

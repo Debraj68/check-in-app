@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.myapp.spring.model.Product;
 
-
 // Annotation is to identify that this is spring managed bean
 // This is a data repository class 
 
@@ -17,14 +16,15 @@ import com.myapp.spring.model.Product;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
 	// select * from products where price> 
-	Optional<List<Product>> findByPriceGreaterThanEqual(Double price);
+	Optional<List<Product>> findBySeatnoGreaterThanEqual(Integer seatno);
 	
-	Optional<List<Product>> findByProductNameOrPrice(String productName,Double price);
+	Optional<List<Product>> findByFirstNameOrSeatno(String firstName,Integer seatno);
 
-	Optional<List<Product>> findByProductNameLike(String productName);
+	Optional<List<Product>> findByFirstNameLike(String firstName);
 	
-	Optional<List<Product>> findByPriceIn(Collection<Double> prices);
+	Optional<List<Product>> findBySeatnoIn(Collection<Integer> seatnos);
 	
-	Optional<List<Product>> findByProductNameIgnoreCase(String productName);
+	Optional<List<Product>> findByFirstNameIgnoreCase(String firstName);
+	
+	
 }
-	
