@@ -3,11 +3,11 @@ package com.myapp.spring;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication()
+@SpringBootApplication
 public class CheckInFlightApplication {
-//
-//	public static void main(String[] args) {
-//		SpringApplication.run(CheckInFlightApplication.class, args);
-//	}
-//
+
+	public static void main(String[] args) {
+		SpringApplication.run(CheckInFlightApplication.class, args);
+	}
+
 }
