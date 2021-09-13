@@ -7,8 +7,8 @@ metadata:
 spec:
   #type: NodePort
   ports:
-    - port: 3307
-      #nodePort: 3307
+    - port: 3306
+      #nodePort: 3306
   selector:
     app: mysql
 ---
@@ -72,7 +72,7 @@ spec:
                   name: mysql-secret
                   key: MYSQL_PASSWORD
           ports:
-            - containerPort: 3307
+            - containerPort: 3306
               name: mysql
           volumeMounts:
             - name: mysql-persistent-storage
@@ -93,7 +93,7 @@ metadata:
   name: mysql-config
 data:
   MYSQL_DATABASE: devops
-  MYSQL_DATABASE_URL: jdbc:mysql://mysql:3307/devops
+  MYSQL_DATABASE_URL: jdbc:mysql://mysql/devops
   initdb.sql: |
     use devops;
     
